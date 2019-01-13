@@ -1,4 +1,6 @@
-﻿namespace FekreBekr
+﻿using ConsoleExtender;
+
+namespace FekreBekr
 {
 	internal static class Program
 	{
@@ -26,6 +28,24 @@
 
 		static void Main(string[] args)
 		{
+			//var fonts = ConsoleHelper.ConsoleFonts;
+
+			//for (int f = 0; f < fonts.Length; f++)
+			//{
+			//	System.Console.WriteLine("{0}: X={1}, Y={2}", fonts[f].Index, fonts[f].SizeX, fonts[f].SizeY);
+			//}
+
+			//ConsoleHelper.SetConsoleFont(15);
+
+			//System.Console.WriteLine("Hello, World!");
+
+			//System.Console.ReadLine();
+
+			//ConsoleHelper.SetConsoleIcon(SystemIcons.Information);
+
+			System.Console.Title = "FEKRE BEKR!";
+			System.Console.Clear();
+
 			System.Console.Write("Difficulty? ");
 			string difficultyString = System.Console.ReadLine();
 			int difficulty = System.Convert.ToInt32(difficultyString);
@@ -34,7 +54,7 @@
 				GetRandomNumber(length: difficulty);
 
 			// TODO: In real game the below code should be commented!
-			System.Console.WriteLine(question);
+			//System.Console.WriteLine(question);
 
 			int level = 0;
 
