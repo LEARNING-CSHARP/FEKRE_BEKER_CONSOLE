@@ -8,17 +8,28 @@ namespace FekreBekr
 		{
 		}
 
-		internal static string GetRandomNumber(int length)
+		internal static int GetRandomNumber(int minValue, int maxValue)
 		{
-			string result = string.Empty;
+			//System.Random random =
+			//	new System.Random(System.DateTime.Now.Millisecond);
 
 			System.Random random =
-				new System.Random(System.DateTime.Now.Millisecond);
+				new System.Random(System.Guid.NewGuid().GetHashCode());
+
+			int result =
+				random.Next(minValue: minValue, maxValue: maxValue + 1);
+
+			return result;
+		}
+
+		internal static string GetRandomString(int length)
+		{
+			string result = string.Empty;
 
 			for (int index = 1; index <= length; index++)
 			{
 				int randomInt =
-					random.Next(minValue: 1, maxValue: 9);
+					GetRandomNumber(minValue: 1, maxValue: 9);
 
 				result += randomInt;
 			}
@@ -51,7 +62,7 @@ namespace FekreBekr
 			int difficulty = System.Convert.ToInt32(difficultyString);
 
 			string question =
-				GetRandomNumber(length: difficulty);
+				GetRandomString(length: difficulty);
 
 			// TODO: In real game the below code should be commented!
 			//System.Console.WriteLine(question);
@@ -77,7 +88,8 @@ namespace FekreBekr
 						System.Console.BackgroundColor = System.ConsoleColor.Green;
 						System.Console.ForegroundColor = System.ConsoleColor.Black;
 
-						System.Console.Write("+");
+						//System.Console.Write("+");
+						System.Console.Write(" ");
 					}
 					else
 					{
@@ -88,14 +100,16 @@ namespace FekreBekr
 							System.Console.BackgroundColor = System.ConsoleColor.Yellow;
 							System.Console.ForegroundColor = System.ConsoleColor.Black;
 
-							System.Console.Write("-");
+							System.Console.Write(" ");
+							//System.Console.Write("-");
 						}
 						else
 						{
 							System.Console.BackgroundColor = System.ConsoleColor.Red;
 							System.Console.ForegroundColor = System.ConsoleColor.Black;
 
-							System.Console.Write("*");
+							System.Console.Write(" ");
+							//System.Console.Write("*");
 						}
 					}
 				}
